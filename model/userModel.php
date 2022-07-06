@@ -3,9 +3,16 @@ require_once PROJECT_ROOT_PATH . "/model/database.php";
  
 class UserModel extends Database
 {
-    public function getNews($limit)
+    public function getNews($limit, $topic)
     {
-        //return $this->select("SELECT * FROM users ORDER BY user_id ASC LIMIT ?", ["i", $limit]);
-        return $this->select("SELECT * FROM news_data ORDER BY id DESC LIMIT ?", ["i", $limit]);
+        if ($topic == "") {
+          return $this->select("SELECT * FROM news_data ORDER BY id DESC LIMIT ?", ["i", $limit]);
+
+        }
+        else {
+          $topic = "%".$topic."%";
+          return $this->select("SELECT * FROM news_data  WHERE topic LIKE ? ORDER BY id DESC LIMIT ?", ["si", $topic, $limit]);
+        }
+        
     }
 }

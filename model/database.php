@@ -40,7 +40,12 @@ class Database
             }
  
             if( $params ) {
-                $stmt->bind_param($params[0], $params[1]);
+                
+                //$stmt->bind_param(implode(", ",$params));
+
+
+
+                //$stmt->bind_param($params[0], $params[1]);
             }
  
             $stmt->execute();

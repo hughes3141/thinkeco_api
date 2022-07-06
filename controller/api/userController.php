@@ -39,8 +39,13 @@ class UserController extends BaseController
                 if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
                     $intLimit = $arrQueryStringParams['limit'];
                 }
+
+                $strTopic = "";
+                if (isset($arrQueryStringParams['topic']) && $arrQueryStringParams['topic']) {
+                  $strTopic = $arrQueryStringParams['topic'];
+              }
  
-                $arrUsers = $userModel->getNews($intLimit);
+                $arrUsers = $userModel->getNews($intLimit, $strTopic);
                 $responseData = json_encode($arrUsers);
             } catch (Error $e) {
                 $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
