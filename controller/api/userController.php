@@ -2,25 +2,30 @@
 
 class UserController extends BaseController
 {
-
+    /**
+     * This is a utility function to help diagnose issues in the first part of listAction() method
+     */
     public function showQueries() {
       $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
         $arrQueryStringParams = $this->getQueryStringParams();
-
-        return var_dump($_GET);
+        
+        return var_dump($arrQueryStringParams);
+        //return var_dump($_GET);
 
 
     }
+
+    
     /**
-     * "/user/list" Endpoint - Get list of users
+     * "/news/list" Endpoint - Get list of news articles
      */
     public function listAction()
     {
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
-        //$arrQueryStringParams = $this->getQueryStringParams();
-        $arrQueryStringParams = $_GET;
+        $arrQueryStringParams = $this->getQueryStringParams();
+        //$arrQueryStringParams = $_GET;
 
 
 
@@ -30,12 +35,12 @@ class UserController extends BaseController
             try {
                 $userModel = new UserModel();
  
-                $intLimit = 100;
+                $intLimit = 10;
                 if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
                     $intLimit = $arrQueryStringParams['limit'];
                 }
  
-                $arrUsers = $userModel->getUsers($intLimit);
+                $arrUsers = $userModel->getNews($intLimit);
                 $responseData = json_encode($arrUsers);
             } catch (Error $e) {
                 $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
