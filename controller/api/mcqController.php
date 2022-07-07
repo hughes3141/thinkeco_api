@@ -2,40 +2,24 @@
 
 class UserController extends BaseController
 {
-    /**
-     * This is a utility function to help diagnose issues in the first part of listAction() method
-     */
-    public function showQueries() {
-      $strErrorDesc = '';
-        $requestMethod = $_SERVER["REQUEST_METHOD"];
-        $arrQueryStringParams = $this->getQueryStringParams();
-        
-        return var_dump($arrQueryStringParams);
-        //return var_dump($_GET);
-
-
-    }
 
     
+    
     /**
-     * "/news/list" Endpoint - Get list of news articles
+     * "/mcq/list" Endpoint - Get list of news articles
      */
     public function listAction()
     {
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
         $arrQueryStringParams = $this->getQueryStringParams();
-        //$arrQueryStringParams = $_GET;
-
-
-
-       
+        
  
         if (strtoupper($requestMethod) == 'GET') {
             try {
                 $userModel = new UserModel();
  
-                $intLimit = 10;
+                $intLimit = 7;
                 if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
                     $intLimit = $arrQueryStringParams['limit'];
                 }
@@ -44,8 +28,13 @@ class UserController extends BaseController
                 if (isset($arrQueryStringParams['topic']) && $arrQueryStringParams['topic']) {
                   $strTopic = $arrQueryStringParams['topic'];
               }
+
+                echo $intLimit;
+                echo $strTopic;
  
-                $arrUsers = $userModel->getNews($intLimit, $strTopic);
+                $arrUsers = $userModel->getMCQs($intLimit, $strTopic);
+                //$arrUsers = $userModel->pureSelect("SELECT id, No, Answer, Topic, question, examBoard FROM question_bank_3");
+                //print_r($arrUsers);
                 $responseData = json_encode($arrUsers);
             } catch (Error $e) {
                 $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
@@ -68,6 +57,10 @@ class UserController extends BaseController
             );
         }
     }
+
+
+    
+    
 }
 
 

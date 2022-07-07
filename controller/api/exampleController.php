@@ -50,3 +50,17 @@ call_user_func_array("foobar", array("one", "two"));
 // Call the $foo->bar() method with 2 arguments
 $foo = new foo;
 call_user_func_array(array($foo, "bar"), array("three", "four"));
+
+class UserController 
+{
+
+    public function sayThis() {
+      echo "Say this";
+    }
+}
+
+
+
+$objFeedController = new UserController();
+
+$objFeedController->sayThis();

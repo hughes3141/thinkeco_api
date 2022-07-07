@@ -46,7 +46,7 @@ class Database
                  * Original version that did not suppor multiple control variables.
                  * $stmt->bind_param($params[0], $params[1]);
                  */
-                
+
                 $stmt->bind_param(...$params);
             }
  
@@ -57,4 +57,25 @@ class Database
             throw New Exception( $e->getMessage() );
         }   
     }
+    
+    
+    /*
+
+    This function was created to help resolve issues with the API.
+
+    public function pureSelect($query) {
+      $result = $this->connection->query($query);
+      //return $result->fetch_assoc();
+      $arrResult = [];
+      while($row = $result->fetch_assoc()) {
+        //print_r($row);
+        array_push($arrResult, $row);
+      }
+
+      return $arrResult;
+      
+
+    }
+    */
+    
 }
