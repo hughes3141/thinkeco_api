@@ -5,7 +5,7 @@ This api is deployed at the following:
 https://api.thinkeconomics.co.uk/index.php/{MODULE}/{METHOD}?[limit=]&[topic=]
 
 Modules:
--news
+\-news
 -mcq
 
 Methods:
