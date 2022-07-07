@@ -5,10 +5,10 @@ This api is deployed at the following:
 https://api.thinkeconomics.co.uk/index.php/{MODULE}/{METHOD}?[limit=]&[topic=]
 
 Modules:
-news
-mcq
+-news
+-mcq
 
 Methods:
-list
+-list
 
 e.g.: https://api.thinkeconomics.co.uk/index.php/mcq/list?limit=2&topic=2.2.2
