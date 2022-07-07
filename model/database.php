@@ -41,11 +41,13 @@ class Database
  
             if( $params ) {
                 
-                //$stmt->bind_param(implode(", ",$params));
-
-
-
-                //$stmt->bind_param($params[0], $params[1]);
+                
+                /**
+                 * Original version that did not suppor multiple control variables.
+                 * $stmt->bind_param($params[0], $params[1]);
+                 */
+                
+                $stmt->bind_param(...$params);
             }
  
             $stmt->execute();
