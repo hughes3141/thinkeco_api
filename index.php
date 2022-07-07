@@ -12,7 +12,11 @@ if ((isset($uri[2]) && (($uri[2] != 'news') && ($uri[2] != 'mcq'))) || !isset($u
     exit();
 }
 
+//echo PROJECT_ROOT_PATH;
 
+
+
+//echo PROJECT_ROOT_PATH . "/inc/config.php";
 
 if($uri[2]=='news') {
   require PROJECT_ROOT_PATH . "/controller/api/userController.php";
@@ -35,5 +39,7 @@ echo "\n";
 */
 
 $objFeedController->{$strMethodName}();
+
+//echo "ThinkEconomics API";
 
 ?>

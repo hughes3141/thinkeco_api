@@ -19,7 +19,7 @@ class UserController extends BaseController
             try {
                 $userModel = new UserModel();
  
-                $intLimit = 7;
+                $intLimit = 100;
                 if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
                     $intLimit = $arrQueryStringParams['limit'];
                 }
@@ -29,8 +29,8 @@ class UserController extends BaseController
                   $strTopic = $arrQueryStringParams['topic'];
               }
 
-                echo $intLimit;
-                echo $strTopic;
+                //echo $intLimit;
+                //echo $strTopic;
  
                 $arrUsers = $userModel->getMCQs($intLimit, $strTopic);
                 //$arrUsers = $userModel->pureSelect("SELECT id, No, Answer, Topic, question, examBoard FROM question_bank_3");
